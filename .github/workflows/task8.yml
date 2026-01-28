@@ -8,4 +8,5 @@ jobs:
     uses: ./.github/workflows/task6.yml
     with:
       node-version: '18'
+    secrets:
       token: ${{ secrets.NPM_TOKEN }}

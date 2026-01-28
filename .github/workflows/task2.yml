@@ -1,0 +1,19 @@
+name: Task 2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  matrix-failfast:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    steps:
+      - name: OS Not windows
+        if: matrix.os == '!windows-latest'
+        run: echo "Running on OS = ${{ matrix.os }}"
+      - name: OS Windows
+        if: matrix.os == 'windows-latest'
+        run: exit 1

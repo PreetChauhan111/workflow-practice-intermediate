@@ -20,7 +20,9 @@ jobs:
         with:
           node-version: ${{ inputs.node-version }}
       - name: secret token
-        if: inputs.token != ''
+        env:
+          TOKEN: ${{ secrets.token }}
+        if: ${{ env.TOKEN != '' }}
         run: echo "Secret received"
       - name: install dependencies
         run: npm ci

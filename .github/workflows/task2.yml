@@ -12,7 +12,7 @@ jobs:
         os: [windows-latest, ubuntu-latest]
     steps:
       - name: OS Not windows
-        if: matrix.os == '!windows-latest'
+        if: matrix.os == 'ubuntu-latest'
         run: echo "Running on OS = ${{ matrix.os }}"
       - name: OS Windows
         if: matrix.os == 'windows-latest'

@@ -1,7 +1,7 @@
 name: Task 7
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
   use-reusable:

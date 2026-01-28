@@ -5,15 +5,16 @@ on:
 
 jobs:
   matrix-failfast:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
+
     steps:
-      - name: OS Not windows
-        if: matrix.os == 'ubuntu-latest'
+      - name: Print OS
         run: echo "Running on OS = ${{ matrix.os }}"
-      - name: OS Windows
-        if: matrix.os == 'windows-latest'
+
+      - name: Fail on Windows
+        if: ${{ matrix.os == 'windows-latest' }}
         run: exit 1

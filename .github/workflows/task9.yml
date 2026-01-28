@@ -1,0 +1,20 @@
+name: Task 9
+
+on:
+  workflow_dispatch:
+
+jobs:
+  read-job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+  write-job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Confirmation Step
+        run: echo "Write Permission Granted"

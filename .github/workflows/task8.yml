@@ -10,3 +10,31 @@ jobs:
       node-version: '18'
     secrets:
       token: ${{ secrets.NPM_TOKEN }}
+
+# name: Task 6
+# on:
+#   workflow_call:
+#     inputs:
+#       node-version:
+#         required: true
+#         type: string
+#     secrets:
+#       token:
+#         required: true
+# jobs:
+#   install:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: checkout repo
+#         uses: actions/checkout@v4
+#       - name: use node version
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: ${{ inputs.node-version }}
+#       - name: secret token
+#         env:
+#           TOKEN: ${{ secrets.token }}
+#         if: ${{ env.TOKEN != '' }}
+#         run: echo "Secret received"
+#       - name: install dependencies
+#         run: npm ci

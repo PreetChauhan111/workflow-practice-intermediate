@@ -1,0 +1,11 @@
+name: Task 8
+
+on:
+  workflow_dispatch:
+
+jobs:
+  reusable_workflow:
+    uses: ./.github/workflows/task6.yml
+    with:
+      node-version: '18'
+      token: ${{ secrets.NPM_TOKEN }}

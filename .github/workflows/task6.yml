@@ -6,6 +6,9 @@ on:
       node-version:
         required: true
         type: string
+      token:
+        required: true
+        type: string
 jobs:
   install:
     runs-on: ubuntu-latest
@@ -16,5 +19,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
+      - name: secret token
+        if: inputs.token != ''
+        run: echo "Secret received"
       - name: install dependencies
         run: npm ci

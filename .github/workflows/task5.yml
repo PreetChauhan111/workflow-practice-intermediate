@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  cach-restore-demo:
+  cache-restore-demo:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -13,16 +13,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-      - name: Cache node modules
+      - name: Restore NPM cache
         id: cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-npm
+            ${{ runner.os }}-npm-
       - name: Cache hit print
         if: steps.cache.outputs.cache-hit == 'true'
         run: echo "Cache hit!"
       - name: Install dependencies
-        run: npm install
+        run: npm ci

@@ -1,0 +1,27 @@
+name: Task 3
+
+on:
+  workflow_dispatch:
+
+jobs:
+  matrix-include-exclude:
+    runs-on: metrix.os
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [16, 18]
+        include:
+          - os: ubuntu-latest
+            node: 20
+            experimental: true
+        exclude:
+          - os: windows-latest
+            node: 16
+    steps:
+      - name: Print OS
+        run: echo "OS = ${{ matrix.os }}"
+      - name: Print Node Version
+        run: echo "Node Version = ${{ matrix.node }}"
+      - name: Print Experimental Flag
+        if: matrix.experimental == true
+        run: echo "Experimental build"

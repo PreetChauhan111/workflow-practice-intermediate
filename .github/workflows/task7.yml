@@ -1,0 +1,10 @@
+name: Task 7
+
+on:
+  workflow_dispatch
+
+jobs:
+  use-reusable:
+    uses: ./.github/workflows/task6.yml
+    with:
+      node-version: 18

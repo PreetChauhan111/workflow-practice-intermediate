@@ -1,0 +1,28 @@
+name: Task 5
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cach-restore-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Cache node modules
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm
+      - name: Cache hit print
+        if: steps.cache.outputs.cache-hit == 'true'
+        run: echo "Cache hit!"
+      - name: Install dependencies
+        run: npm install

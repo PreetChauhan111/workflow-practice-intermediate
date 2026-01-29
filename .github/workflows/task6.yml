@@ -8,7 +8,7 @@ on:
         type: string
     outputs:
       NODE_USED: 
-        value: ${{ jobs.install.outputs.NODE_USED }}
+        value: ${{ jobs.install.node_version.NODE_USED }}
 jobs:
   install:
     runs-on: ubuntu-latest

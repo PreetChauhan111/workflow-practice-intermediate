@@ -1,0 +1,16 @@
+name: Task 15
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment: 
+      name: production
+    if: github.ref_name == 'main'
+
+    steps:
+      - name: Deploy
+        run: echo "Deploying to production"
+

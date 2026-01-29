@@ -1,0 +1,16 @@
+name: Task 12
+
+on:
+  workflow_dispatch:
+
+jobs:
+  error-handling-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: lint
+        run: exit 1
+        continue-on-error: true
+      - name: tests
+        run: echo "Running tests"
+      - name: summary
+        run: echo "Pipeline Completed"

@@ -8,7 +8,7 @@ jobs:
     uses: ./.github/workflows/task6.yml
     with:
       node-version: '16'
-
+      
   print:
     runs-on: ubuntu-latest
     needs: use-reusable-workflow
@@ -26,20 +26,24 @@ jobs:
 #         required: true
 #         type: string
 #     outputs:
-#       NODE_USED: 
+#       NODE_USED:
 #         value: ${{ jobs.install.outputs.NODE_USED }}
 # jobs:
 #   install:
 #     runs-on: ubuntu-latest
+
+#     outputs:
+#       NODE_USED: ${{ steps.node_version.outputs.NODE_USED }}
+
 #     steps:
-#       - name: checkout repo
-#         uses: actions/checkout@v4
-#       - name: use node version
-#         uses: actions/setup-node@v4
+#       - uses: actions/checkout@v4
+
+#       - uses: actions/setup-node@v4
 #         with:
 #           node-version: ${{ inputs.node-version }}
+
 #       - name: node output
 #         id: node_version
-#         run: echo "NODE_USED=${{  inputs.node-version }}" >> $GITHUB_OUTPUT
-#       - name: install dependencies
-#         run: npm ci        
+#         run: echo "NODE_USED=${{ inputs.node-version }}" >> $GITHUB_OUTPUT
+
+# Note: To use output go through hierarchy structure workflow -> Jobs -> Steps   

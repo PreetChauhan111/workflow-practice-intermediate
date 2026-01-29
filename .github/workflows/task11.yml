@@ -1,0 +1,14 @@
+name: Task 11
+
+on: 
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  use-reusable:
+    if: github.ref_name == 'main'
+    uses: ./.github/workflows/task6.yml
+    with:
+      node-version: 18

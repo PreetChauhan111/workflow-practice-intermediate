@@ -6,17 +6,10 @@ on:
       node-version:
         required: true
         type: string
-    outputs:
-      NODE_USED:
-        value: ${{ jobs.install.outputs.NODE_USED }}
 
 jobs:
   install:
     runs-on: ubuntu-latest
-
-    outputs:
-      NODE_USED: ${{ steps.node_version.outputs.NODE_USED }}
-
     steps:
       - uses: actions/checkout@v4
 
@@ -25,5 +18,4 @@ jobs:
           node-version: ${{ inputs.node-version }}
 
       - name: node output
-        id: node_version
-        run: echo "NODE_USED=${{ inputs.node-version }}" >> $GITHUB_OUTPUT
+        run: echo "NODE_USED=${{ inputs.node-version }}"

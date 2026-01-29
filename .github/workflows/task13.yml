@@ -10,7 +10,7 @@ jobs:
       - name: Build Step
         run: echo "Succeed"
       - name: test
-        run: exit 1
+        run: echo "exit 1"
       - name: On-success
         if: success()
         run: echo "On-Success"
